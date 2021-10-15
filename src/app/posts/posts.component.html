@@ -1,0 +1,53 @@
+<div class="main-wrapper">
+    <div class="scroll-block">
+      <div class="step" [ngClass]="{'active': active === 1}" pageScroll
+        (click)="onScroll(panel1, 1)">
+        <div class="round-wrap">
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="step" [ngClass]="{'active': active === 2}" pageScroll
+        (click)="onScroll(panel2, 2)">
+        <div class="round-wrap">
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="step" [ngClass]="{'active': active === 3}" pageScroll
+        (click)="onScroll(panel3, 3)">
+        <div class="round-wrap">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  
+    <div #panel1 class="scroll-card">
+      <div class="card-inner">
+        <h1 class="TITLE">Fresh News</h1>
+            <div class="li1" *ngFor="let post of model" (click)="onClick(post)">
+                <span class="badge" *ngIf="post.userId==1">{{post.id}}. {{post.title}}</span>
+            </div>
+            <br>
+        <button mat-button [routerLink]="'/post/post-create'">Add News</button>
+    </div>
+    </div>
+    <div #panel2 class="scroll-card">
+      <div class="card-inner">
+        <h1 class="TITLE">Fresh News</h1>
+        <div class="li2" *ngFor="let post of model" (click)="onClick(post)">
+            <span class="badge" *ngIf="post.userId==2">{{post.id}}. {{post.title}}</span>
+        </div>
+        <br>
+        <button mat-button [routerLink]="'/post/post-create'">Add News</button>
+      </div>
+    </div>
+    <div #panel3 class="scroll-card">
+      <div class="card-inner">
+        <h1 class="TITLE">Fresh News</h1>
+        <div class="li3" *ngFor="let post of model" (click)="onClick(post)">
+            <span class="badge" *ngIf="post.userId==3">{{post.id}}. {{post.title}}</span>
+        </div>
+        <br>
+        <button mat-button [routerLink]="'/post/post-create'">Add News</button>
+      </div>
+    </div>
+  </div>
