@@ -4,7 +4,6 @@ import { PageScrollService } from 'ngx-page-scroll-core';
 import { Post } from './post.model';
 import { POSTS } from './post.storage';
 import { DOCUMENT } from '@angular/common';
-import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-posts',

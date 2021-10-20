@@ -1,2 +1,8 @@
-<h1>About Me</h1>
-<p>Csak gyakorlás</p>
+<h2>Favorite</h2>
+
+<div *ngFor="let item of items">
+  <span>{{ item.id }}.{{item.title}}</span>
+</div>
+
+<button mat-raised-button color="warn" (click)="DelFromFav()">Törlés</button>
+

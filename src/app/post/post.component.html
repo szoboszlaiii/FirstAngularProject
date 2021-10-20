@@ -1,4 +1,7 @@
-<h2>{{model.title}}</h2>
-<p>{{model.body}}</p>
+<div>
+    <h2>{{ model.title }}</h2>
+    <h3>{{ model.body }}</h3>
+    <button mat-button color="primary" (click)="addToFav(model)">Add to Favorite</button>
+  </div>
 
 <button mat-button [routerLink]="'/posts'">Back</button>

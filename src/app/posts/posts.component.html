@@ -24,7 +24,8 @@
       <div class="card-inner">
         <h1 class="TITLE">Fresh News</h1>
             <div class="li1" *ngFor="let post of model" (click)="onClick(post)">
-                <span class="badge" *ngIf="post.userId==1">{{post.id}}. {{post.title}}</span>
+                <span class="badge" *ngIf="post.userId==1">{{post.id}}. {{post.title}} 
+                </span>
             </div>
             <br>
         <button mat-button [routerLink]="'/post/post-create'">Add News</button>
@@ -33,9 +34,10 @@
     <div #panel2 class="scroll-card">
       <div class="card-inner">
         <h1 class="TITLE">Fresh News</h1>
-        <div class="li2" *ngFor="let post of model" (click)="onClick(post)">
-            <span class="badge" *ngIf="post.userId==2">{{post.id}}. {{post.title}}</span>
-        </div>
+            <div class="li2" *ngFor="let post of model">
+                <span class="badge" *ngIf="post.userId==2" (click)="onClick(post)">{{post.id}}. {{post.title}} 
+                  </span>
+            </div>
         <br>
         <button mat-button [routerLink]="'/post/post-create'">Add News</button>
       </div>
@@ -44,7 +46,9 @@
       <div class="card-inner">
         <h1 class="TITLE">Fresh News</h1>
         <div class="li3" *ngFor="let post of model" (click)="onClick(post)">
-            <span class="badge" *ngIf="post.userId==3">{{post.id}}. {{post.title}}</span>
+            <span class="badge" *ngIf="post.userId==3">{{post.id}}. {{post.title}}
+
+            </span>
         </div>
         <br>
         <button mat-button [routerLink]="'/post/post-create'">Add News</button>

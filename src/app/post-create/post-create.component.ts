@@ -9,11 +9,12 @@ import { FormBuilder, FormControl, FormGroup, Validators, FormArray} from '@angu
 export class PostCreateComponent implements OnInit {
 
   genres = ["Rablás", "Politika", "Időjárás"];
-  news = { title2: 'Cim', body2: 'tartalom', genre: this.genres[0]}
+  news = { title2: '', body2: '', genre: this.genres[0]}
 
   form!: FormGroup;
   newsForm!: FormGroup;
   dynamicForm!: FormGroup;
+
 
 
   constructor(private formB: FormBuilder) { }

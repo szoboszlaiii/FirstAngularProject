@@ -1,84 +1,103 @@
+<div class="center">
 <h1>Hirek hozzáadása</h1>
 <h2>Reactive form</h2>
 <form [formGroup]="form">
-        <input matInput placeholder="Cím" formControlName="title">
-    <br>
-    <br>
-        <textarea matInput placeholder="Tartalom" formControlName="body"></textarea>
-    <hr>
-    <button type="sumbit" [disabled]="!form.valid">Sumbit</button>
+  <div>
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  </div>
+  <div>
+  <mat-form-field appearance="fill">
+    <mat-label>Content</mat-label>
+    <textarea matInput formControlName="body"></textarea>
+  </mat-form-field>
+    </div>
+    <button mat-button color="primary" (click)="updateProfile()">Update</button>
 </form>
 <hr>
 
 <p>Form Value: {{ form.value | json }}</p>
-
-<p>Form Status: {{ form.status }}</p>
-
-<button (click)="updateProfile()">update</button>
 <hr>
 <h2>Validáció</h2>
 
 <form [formGroup]="newsForm" #formDir="ngForm">
-
     <div [hidden]="formDir.submitted">
-      <div>
-          <label for="title2">Title</label>
-          <input type="text" id="title2"formControlName="title2" required>
-            <div *ngIf="title2.errors?.required">
-              Title is required.
-            </div>
-            <div *ngIf="title2.errors?.minlength">
-              Title must be at least 4 characters long.
-            </div>
-        </div>
-        <br>
         <div>
-          <label for="body2">Content</label>
-          <input type="text" id="body2" formControlName="body2" required>
-              <div *ngIf="body2.errors?.required">
-                Content is required.
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Enter the title</mat-label>
+                <input matInput type="text" id="title2" formControlName="title2" required>
+                    <mat-error *ngIf="title2.errors?.required">Title required</mat-error>
+                    <mat-error *ngIf="title2.errors?.minlength">At least 4 ch long.</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="fill">
+                <mat-label>Enter the Content</mat-label>
+                <textarea matInput type="text" id="body2" formControlName="body2" required></textarea>
+                    <mat-error *ngIf="body2.errors?.required">Body required</mat-error>
+                    <mat-error *ngIf="body2.errors?.minlength">At least 50 ch long.</mat-error>
+              </mat-form-field>
+              <br>
               </div>
-              <div *ngIf="body2.errors?.minlength">
-                Content must be at least 50 characters long.
+            <div>
+              <mat-form-field apperance="fill">
+              <mat-label for="genre">Select</mat-label>
+              <mat-select id="genre" formControlName="genre" required>
+                <mat-option *ngFor="let p of genres" [value]="p">{{p}}</mat-option>
+              </mat-select>
+              <div *ngIf="genre.invalid && genre.touched" class="alert alert-danger">
+                <div *ngIf="genre.errors?.required">Genre is required.</div>
               </div>
-        </div>
-        <br>
-      <div>
-        <label for="genre">Genre</label>
-        <select id="genre" formControlName="genre" required>
-          <option *ngFor="let p of genres" [value]="p">{{p}}</option>
-        </select>
-        <div *ngIf="genre.invalid && genre.touched" class="alert alert-danger">
-          <div *ngIf="genre.errors?.required">Genre is required.</div>
-        </div>
+            </mat-form-field>
+          </div>
       </div>
-
       <p>Complete the form to enable the Submit button.</p>
-      <button class="submit" type="submit"  [disabled]="newsForm.invalid">Submit</button>
-      <button class="button" type="button" (click)="formDir.resetForm({})">Reset</button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="newsForm.invalid">Submit</button>
+      <button mat-flat-button color="warn" (click)="formDir.resetForm({})">Reset</button>
     </div>
   </form>
 
   <div class="submitted-message" *ngIf="formDir.submitted">
     <p>You've submitted your Article, {{ newsForm.value.title2 }}!</p>
-    <button (click)="formDir.resetForm({})">Add new Article</button>
+    <button mat-flat-button color="warn" (click)="formDir.resetForm({})">Add new Article</button>
   </div>
   <hr>
   <h2>Dynamic Form</h2>
+
   <form [formGroup]="dynamicForm">
-    <input matInput placeholder="Cím" formControlName="title">
-<br>
-<br>
-    <textarea matInput placeholder="Tartalom" formControlName="body"></textarea>
-<hr>
-  <div formArrayName="users">
-      <div *ngFor="let users of userForm.controls; let i = index" FormGroupName="i">
-          Name<input formControlName = "name">
-          Email<input formControlName = "email">
-          Password<input formControlName = "password">
-          <button color="red" (click)="deleteUser(i)">törlés</button>
-      </div>
-  </div>
-  <button (click)="addUser()">+Felhasználó</button>
-</form>
+    <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Tartalom</mat-label>
+          <input matInput formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tartalom</mat-label>
+          <input matInput formControlName="body">
+        </mat-form-field>
+          <button mat-mini-fab color="accent" (click)="addUser()">
+            <mat-icon>plus_one</mat-icon>
+          </button>
+        </div>
+      <hr>
+        <div formArrayName="users">
+            <div *ngFor="let users of userForm.controls; let i = index" FormGroupName="i">
+              <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName = "name">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName = "email">
+              </mat-form-field>
+              <mat-form-field appearance="fill"> 
+                <mat-label>password</mat-label>
+                 <input matInput formControlName = "password">
+                </mat-form-field>
+                <button mat-flat-button color="warn" (click)="deleteUser(i)">törlés</button>
+            </div>
+        </div>
+  </form>
+</div>
   

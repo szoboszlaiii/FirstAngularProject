@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FavovirteService } from '../favorites/favovirte.service';
 
 @Component({
   selector: 'app-about',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  items = this.favoriteService.getItems();
+
+  DelFromFav(){
+    this.favoriteService.DelFromFav();
+    window.alert('Eltávolitva');
+  }
+
+  constructor(private favoriteService:FavovirteService) { }
 
   ngOnInit(): void {
   }

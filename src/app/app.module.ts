@@ -12,9 +12,12 @@ import { PostCreateComponent } from './post-create/post-create.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
-//import { MatButtonModule } from '@material/button';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,13 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
     NgxPageScrollCoreModule.forRoot({ 
       duration: 1500 
     }),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatInputModule,
+    MatIconModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
